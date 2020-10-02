@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 <head>
-  <title>Sidebar 01</title>
+  <title>SA_P8-201602656</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -87,6 +87,7 @@
         <!--Muestra de datos-->
         <h3>Estudiantes registrados</h3>
         <div class="formdiv">
+          <input type="submit" value="Actualizar estudiantes" ng-click="vm.getStudents()">
           <table id="students">
             <tr>
               <th>Nombre</th>
@@ -94,7 +95,7 @@
             </tr>
             <tr ng-repeat="student in vm.studentsList">
               <td>{{student.nombre}}</td>
-              <td>{{student.carne}}</td>              
+              <td>{{student.carnet}}</td>              
             </tr>
           </table>
         </div>
