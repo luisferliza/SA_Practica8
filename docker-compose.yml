@@ -1,0 +1,46 @@
+version: "3"
+services:
+  api:
+    image: apinode
+    ports:
+      - "3000:3000"
+    networks:
+      testing_net:
+            ipv4_address: 182.18.7.9
+    
+    environment:
+      - PORT=3000
+      - IP=182.18.7.2
+      - PASS=123456789
+      - USER=root
+    depends_on:
+      - mysql  
+  mysql:
+    container_name: mysql
+    restart: always
+    image: bd
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456789
+      MYSQL_DATABASE: practica
+    networks:
+        testing_net:
+            ipv4_address: 182.18.7.2
+  
+  webpage:
+    image: web-api
+    restart: always
+    ports:
+      - 80:80
+    networks:
+        testing_net:
+            ipv4_address: 182.18.7.4
+    depends_on:
+      - api
+
+networks:
+    testing_net:
+        ipam:
+            driver: default
+            config:
+                - subnet: 182.18.7.0/24
