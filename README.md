@@ -2,7 +2,7 @@
 
 ## Luis Fernando Lizama - 201602656
 
-El video de demostracion de este proyecto puede encontrarse en  [este enlace](https://youtu.be/mWWDw-jfvqA "Video")
+El video de demostracion de este proyecto puede encontrarse en  [este enlace](https://youtu.be/-37pgXOIswY "Video")
 
 ## Configuración general
 El Script para eliminar las imagenes anteriores y crear las nuevas se encuentra en el archivo main.sh. Para ejecutarlo unicamente escribimos el comando
@@ -103,6 +103,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456789
       MYSQL_DATABASE: practica
+    volumes:
+      - my-db:/var/lib/mysql
     networks:
         testing_net:
             ipv4_address: 182.18.7.2
@@ -124,4 +126,7 @@ networks:
             driver: default
             config:
                 - subnet: 182.18.7.0/24
+  
+volumes:
+  my-db:
 ```

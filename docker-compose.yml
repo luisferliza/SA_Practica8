@@ -23,6 +23,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456789
       MYSQL_DATABASE: practica
+    volumes:
+      - my-db:/var/lib/mysql
     networks:
         testing_net:
             ipv4_address: 182.18.7.2
@@ -44,3 +46,6 @@ networks:
             driver: default
             config:
                 - subnet: 182.18.7.0/24
+  
+volumes:
+  my-db:
